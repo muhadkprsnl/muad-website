@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import {
@@ -16,9 +16,13 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 
 function AcademyDevelopmentModels() {
+    const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
     const videoRef = useRef(null);
     const sectionRef = useRef(null);
+    const locationState = location.state as { from?: string; fromLabel?: string } | null;
+    const backTo = locationState?.from === "/cv" ? "/cv" : "/research";
+    const backLabel = locationState?.from === "/cv" ? locationState.fromLabel || "CV" : "Research";
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -48,7 +52,7 @@ function AcademyDevelopmentModels() {
                     {/* Navigation */}
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0  sm:mt-20">
-                            <Link to="/research" className="w-full sm:w-auto">
+                            <Link to={backTo} className="w-full sm:w-auto">
                                 <Button variant="ghost" className="hover:bg-accent w-full sm:w-auto justify-center sm:justify-start">
                                     <ArrowLeft className="w-4 h-4 mr-2" />
                                     Go Back
@@ -59,10 +63,10 @@ function AcademyDevelopmentModels() {
                                 <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
                                 <span className="text-gray-400">/</span>
                                 <Link
-                                    to="/Research"
+                                    to={backTo}
                                     className="text-gray-600 hover:text-gray-900 transition-colors"
                                 >
-                                    Research
+                                    {backLabel}
                                 </Link>
                                 <span className="text-gray-400">/</span>
                                 <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">Academy Development Models</span>
@@ -98,7 +102,7 @@ function AcademyDevelopmentModels() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0 mt-12 sm:mt-20">
-                        <Link to="/research" className="w-full sm:w-auto">
+                        <Link to={backTo} className="w-full sm:w-auto">
                             <Button variant="ghost" className="hover:bg-accent w-full sm:w-auto justify-center sm:justify-start">
                                 <ArrowLeft className="w-4 h-4 mr-2" />
                                 Go Back
@@ -109,10 +113,10 @@ function AcademyDevelopmentModels() {
                             <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
                             <span className="text-gray-400">/</span>
                             <Link
-                                to="/Research"
+                                to={backTo}
                                 className="text-gray-600 hover:text-gray-900 transition-colors"
                             >
-                                Research
+                                {backLabel}
                             </Link>
                             <span className="text-gray-400">/</span>
                             <span className="text-gray-900 font-medium">Academy Development Models</span>

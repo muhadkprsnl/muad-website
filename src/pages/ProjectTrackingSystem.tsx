@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import {
@@ -16,9 +16,13 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 
 function ProjectTrackingSystem() {
+    const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
     const videoRef = useRef(null);
     const sectionRef = useRef(null);
+    const locationState = location.state as { from?: string; fromLabel?: string } | null;
+    const backTo = locationState?.from === "/cv" ? "/cv" : "/research";
+    const backLabel = locationState?.from === "/cv" ? locationState.fromLabel || "CV" : "Research";
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -48,7 +52,7 @@ function ProjectTrackingSystem() {
                     {/* Navigation */}
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
                         <div className="flex items-center justify-between">
-                            <Link to="/research">
+                            <Link to={backTo}>
                                 <Button variant="ghost" className="hover:bg-accent">
                                     <ArrowLeft className="w-4 h-4 mr-2" />
                                     Go Back
@@ -65,7 +69,7 @@ function ProjectTrackingSystem() {
                                     <BreadcrumbSeparator />
                                     <BreadcrumbItem>
                                         <BreadcrumbLink asChild>
-                                            <Link to="/research" className="text-base">Research</Link>
+                                            <Link to={backTo} className="text-base">{backLabel}</Link>
                                         </BreadcrumbLink>
                                     </BreadcrumbItem>
                                     <BreadcrumbSeparator />
@@ -205,7 +209,7 @@ function ProjectTrackingSystem() {
                     </div>
 
                     <div className="flex items-center justify-between mt-20">
-                        <Link to="/research">
+                        <Link to={backTo}>
                             <button className="inline-flex items-center px-4 py-2 bg-transparent text-gray-700 font-medium hover:bg-gray-200 transition-colors duration-300 rounded-md">
                                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -218,10 +222,10 @@ function ProjectTrackingSystem() {
                             <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
                             <span className="text-gray-400">/</span>
                             <Link
-                                to="/Research"
+                                to={backTo}
                                 className="text-gray-600 hover:text-gray-900 transition-colors"
                             >
-                                Research
+                                {backLabel}
                             </Link>
                             <span className="text-gray-400">/</span>
                             <span className="text-gray-900 font-medium">Project Tracking System</span>

@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import {
@@ -47,11 +47,15 @@ const researchProjects = [
 
 function Research() {
     const { id } = useParams();
+    const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
     const [imagesLoaded, setImagesLoaded] = useState(0);
     const currentProject = researchProjects.find(p => p.id === id);
     const projectTitle = currentProject?.title || "Research Project";
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const locationState = location.state as { from?: string; fromLabel?: string } | null;
+    const backTo = locationState?.from === "/cv" ? "/cv" : "/research";
+    const backLabel = locationState?.from === "/cv" ? locationState.fromLabel || "CV" : "Research";
 
     const handleImageLoad = () => {
         setImagesLoaded(prev => prev + 1);
@@ -121,7 +125,7 @@ function Research() {
                     {/* Responsive Navigation */}
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
                         <div className="flex items-center justify-between mt-2">
-                            <Link to="/research">
+                            <Link to={backTo}>
                                 <Button variant="ghost" className="hover:bg-accent ">
                                     <ArrowLeft className="w-4 h-4 " />
                                     Go Back
@@ -132,10 +136,10 @@ function Research() {
                                 {/* <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
                                 <span className="text-gray-400">/</span> */}
                                 <Link
-                                    to="/Research"
+                                    to={backTo}
                                     className="text-gray-600 hover:text-gray-900 transition-colors"
                                 >
-                                    Research
+                                    {backLabel}
                                 </Link>
                                 <span className="text-gray-400">/</span>
                                 <span className="text-gray-900 font-medium ">BT Dual Model</span>
@@ -348,7 +352,7 @@ function Research() {
 
                     {/* Navigation */}
                     <div className="flex items-center justify-between">
-                        <Link to="/research">
+                        <Link to={backTo}>
                             <Button variant="ghost" className="hover:bg-accent ">
                                 <ArrowLeft className="w-4 h-4 " />
                                 Go Back
@@ -357,10 +361,10 @@ function Research() {
 
                         <div className="flex items-center space-x-2 text-sm">
                             <Link
-                                to="/Research"
+                                to={backTo}
                                 className="text-gray-600 hover:text-gray-900 transition-colors"
                             >
-                                Research
+                                {backLabel}
                             </Link>
                             <span className="text-gray-400">/</span>
                             <span className="text-gray-900 font-medium">BT Dual Model</span>
@@ -873,6 +877,5 @@ export default Research;
 
 
 // export default Research;
-
 
 

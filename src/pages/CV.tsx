@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { BarsSpinner } from "@/components/ui/barspinner";
 import { Spinner } from "@/components/ui/spinner";
 import { useState, useEffect } from "react";
+import profilePic from "@/assets/profile-pic(15).png";
 
 const CV = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -243,6 +244,13 @@ const CV = () => {
                             Download CV
                         </Button>
                     </div>
+                    <div className="float-right ml-6 mb-4">
+                        <img
+                            src={profilePic}
+                            alt="Muhad K"
+                            className="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover "
+                        />
+                    </div>
                     <h1 className="text-4xl md:text-5xl font-bold mb-2">Muhad K</h1>
                     <p className="text-xl text-muted-foreground mb-4">
                         Software Automation Engineer | Data Scientist | Sports Enthusiast
@@ -457,9 +465,12 @@ const CV = () => {
                                         <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
                                             {project.description}
                                         </p>
-                                        <Link to="/research">
+                                        <Link
+                                            to={`/research/${project.id}`}
+                                            state={{ from: "/cv", fromLabel: "CV" }}
+                                        >
                                             <Button variant="outline" className="gap-2">
-                                                View Research
+                                                View Details
                                                 <ArrowRight className="w-4 h-4" />
                                             </Button>
                                         </Link>
