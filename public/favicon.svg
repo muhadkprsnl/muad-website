@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background -->
+  <rect width="64" height="64" fill="#ffffff"/>
+
+  <!-- Red geometric shape (diagonal parallelogram) -->
+  <path d="M 8 0 L 64 0 L 48 64 L 0 64 Z" fill="#c61831" stroke="none"/>
+
+  <!-- MK text -->
+  <text x="32" y="42" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">MK</text>
+</svg>
