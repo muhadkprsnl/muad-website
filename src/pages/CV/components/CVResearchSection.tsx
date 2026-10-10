@@ -1,10 +1,10 @@
-import { ArrowRight, Check, Clock } from "lucide-react";
+import { ArrowRight, Check, Clock, Github, Linkedin } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
-import { Github } from "lucide-react";
+import { MediumIcon } from "@/components/icons/MediumIcon";
 
 interface ResearchProject {
     id: string;
@@ -12,6 +12,8 @@ interface ResearchProject {
     description: string;
     status: "completed" | "ongoing" | "yet to start";
     category: string;
+    mediumLink?: string;
+    linkedinLink?: string;
 }
 
 interface CVResearchSectionProps {
@@ -41,7 +43,7 @@ export const CVResearchSection = ({ projects }: CVResearchSectionProps) => {
         <section id="research">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
                 <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-3">Research Projects</h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-3">Research Projects & Contributions</h2>
                     <div className="w-16 h-1 bg-primary rounded-full mb-4"></div>
                     <p className="text-sm text-muted-foreground max-w-3xl">
                         A curated collection of research initiatives that combine sports, analytics, and machine learning to deliver smarter performance insights.
@@ -61,15 +63,77 @@ export const CVResearchSection = ({ projects }: CVResearchSectionProps) => {
                                     {project.description}
                                 </p>
                                 <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                                    <Link
-                                        to={`/cv/research/${project.id}`}
-                                        state={{ from: "/cv#research", fromLabel: "CV" }}
-                                    >
-                                        <Button variant="outline" className="gap-2">
-                                            View Details
-                                            <ArrowRight className="w-4 h-4" />
-                                        </Button>
-                                    </Link>
+                                    {(() => {
+                                        const githubLinks: Record<string, string> = {
+                                            "data-driven-scouting": "https://github.com/muhadkprsnl/Radar-chart-using-python/blob/main/README.md",
+                                            "send-bot": "https://github.com/muhadkprsnl/sendBot",
+                                            "wms": "https://github.com/muhadkprsnl/WMS",
+                                            "kloppy": "https://www.linkedin.com/feed/update/urn:li:activity:7513462562525642753/"
+                                        };
+
+                                        if (project.id === "kloppy") {
+                                            return (
+                                                <>
+                                                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7513462562525642753/" target="_blank" rel="noopener noreferrer">
+                                                        <Button variant="outline" className="gap-2">
+                                                            <Linkedin className="w-4 h-4" />
+                                                            LinkedIn
+                                                        </Button>
+                                                    </a>
+                                                    <a href="https://github.com/muhadkprsnl/kloppy" target="_blank" rel="noopener noreferrer">
+                                                        <Button variant="outline" className="gap-2">
+                                                            <Github className="w-4 h-4" />
+                                                            GitHub
+                                                        </Button>
+                                                    </a>
+                                                </>
+                                            );
+                                        }
+
+                                        if (project.linkedinLink && githubLinks[project.id]) {
+                                            return (
+                                                <>
+                                                    <a href={project.linkedinLink} target="_blank" rel="noopener noreferrer">
+                                                        <Button variant="outline" className="gap-2">
+                                                            <Linkedin className="w-4 h-4" />
+                                                            LinkedIn
+                                                        </Button>
+                                                    </a>
+                                                    <a href={githubLinks[project.id]} target="_blank" rel="noopener noreferrer">
+                                                        <Button variant="outline" className="gap-2">
+                                                            <Github className="w-4 h-4" />
+                                                            GitHub
+                                                        </Button>
+                                                    </a>
+                                                </>
+                                            );
+                                        }
+
+                                        if (githubLinks[project.id]) {
+                                            return (
+                                                <a href={githubLinks[project.id]} target="_blank" rel="noopener noreferrer">
+                                                    <Button variant="outline" className="gap-2">
+                                                        <Github className="w-4 h-4" />
+                                                        GitHub
+                                                    </Button>
+                                                </a>
+                                            );
+                                        }
+
+                                        if (project.mediumLink) {
+                                            return null;
+                                        }
+
+                                        return (
+                                            <Link to={`/cv/research/${project.id}`} state={{ from: "/cv#research", fromLabel: "CV" }}>
+                                                <Button variant="outline" className="gap-2">
+                                                    View Details
+                                                    <ArrowRight className="w-4 h-4" />
+                                                </Button>
+                                            </Link>
+                                        );
+                                    })()}
+
                                     {project.id === "performance-analytics" && (
                                         <a
                                             href="https://github.com/muhadkprsnl/Player-tracking.git"
@@ -79,6 +143,19 @@ export const CVResearchSection = ({ projects }: CVResearchSectionProps) => {
                                             <Button variant="outline" className="gap-2">
                                                 <Github className="w-4 h-4" />
                                                 GitHub
+                                            </Button>
+                                        </a>
+                                    )}
+
+                                    {project.mediumLink && (
+                                        <a
+                                            href={project.mediumLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <Button variant="outline" className="gap-2">
+                                                <MediumIcon className="w-4 h-4" />
+                                                Medium
                                             </Button>
                                         </a>
                                     )}

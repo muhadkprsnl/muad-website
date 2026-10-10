@@ -30,9 +30,6 @@ import Footer from "@/components/Footer";
 function PerformanceAnalytics() {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
-    const videoRef = useRef(null);
-    const sectionRef = useRef(null);
-    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const locationState = location.state as { from?: string; fromLabel?: string } | null;
     const backTo = locationState?.from?.startsWith("/cv") ? locationState.from : "/cv#research";
     const backLabel = locationState?.from?.startsWith("/cv") ? locationState.fromLabel || "CV" : "Research";
@@ -45,40 +42,6 @@ function PerformanceAnalytics() {
         return () => clearTimeout(timeout);
     }, []);
 
-    useEffect(() => {
-        if (isLoading) return;
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const [entry] = entries;
-                if (entry.isIntersecting) {
-                    if (videoRef.current) {
-                        videoRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                        setIsVideoPlaying(true);
-                    }
-                } else {
-                    if (videoRef.current) {
-                        videoRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                        setIsVideoPlaying(false);
-                    }
-                }
-            },
-            {
-                threshold: 0.5,
-                rootMargin: '0px'
-            }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, [isLoading]);
 
     if (isLoading) {
         return (
@@ -189,7 +152,7 @@ function PerformanceAnalytics() {
             </section >
 
             {/* Core Objectives Section */}
-            < section ref={sectionRef} className="py-16 sm:py-20 md:py-28 bg-gray-50" >
+            <section className="py-16 sm:py-20 md:py-28 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
                         <div className="lg:w-1/2 space-y-6">
@@ -228,7 +191,6 @@ function PerformanceAnalytics() {
                         <div className="lg:w-1/2 relative">
                             {/* YouTube Video with Auto-play on Scroll */}
                             <iframe
-                                ref={videoRef}
                                 className="w-full aspect-video"
                                 src="https://www.youtube.com/embed/KWZbV1OfHqw"
                                 title="AI Football Performance System Demo"
@@ -236,10 +198,6 @@ function PerformanceAnalytics() {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                             />
-
-                            <div className="text-center mt-2 text-xs sm:text-sm text-gray-500">
-                                {isVideoPlaying ? 'Video playing...' : 'Video paused'}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -451,9 +409,6 @@ export default PerformanceAnalytics;
 
 // function PerformanceAnalytics() {
 //     const [isLoading, setIsLoading] = useState(true);
-//     const videoRef = useRef(null);
-//     const sectionRef = useRef(null);
-//     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
 //     useEffect(() => {
 //         const timeout = setTimeout(() => {

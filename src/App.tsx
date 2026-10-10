@@ -17,9 +17,9 @@ import PerformanceAnalytics from "./pages/CV/Research/Projects/PerformanceAnalyt
 import CV from "./pages/CV/CV";
 import ExperienceDetail from "./pages/Experience/ExperienceDetail";
 import CaseStudies from "./pages/Cases/CaseStudies";
-import DataDrivenPlayerScouting from "./pages/CV/Research/Projects/DataDrivenPlayerScouting";
 import AcademyDevelopmentModels from "./pages/CV/Research/Projects/AcademyDevelopmentModels";
 import ProjectTrackingSystem from "./pages/CV/Research/Projects/ProjectTrackingSystem";
+import RedefinedBradleyTerry from "./pages/CV/Research/Projects/RedefinedBradleyTerry";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -33,8 +33,8 @@ const App = () => (
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/cv" element={<CV />} />
           {/* Specific research routes BEFORE generic :id route */}
+          <Route path="/cv/research/redefined-bradley-terry" element={<RedefinedBradleyTerry />} />
           <Route path="/cv/research/performance-analytics" element={<PerformanceAnalytics />} />
-          <Route path="/cv/research/data-driven-scouting" element={<DataDrivenPlayerScouting />} />
           <Route path="/cv/research/academy-development" element={<AcademyDevelopmentModels />} />
           <Route path="/cv/research/project-tracking" element={<ProjectTrackingSystem />} />
           <Route path="/cv/research/:id" element={<ResearchDetail />} />
