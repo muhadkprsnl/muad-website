@@ -39,7 +39,7 @@ const AboutSection = () => {
                             </div>
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4">
                                 <Link
-                                    to="/Research"
+                                    to="/cv#research"
                                     className="px-6 sm:px-8 py-2.5 sm:py-3 bg-red-600 text-white font-semibold text-xs sm:text-sm tracking-wide hover:bg-red-700 transition-colors duration-300 text-center"
                                 >
                                     RESEARCH

@@ -13,7 +13,7 @@ const Header = () => {
     { name: "ABOUT ME", href: "#about", isExternal: false },
     // { name: "VISION", href: "/", isExternal: false },
     // { name: "CASE STUDY", href: "/case-studies", isExternal: false },
-    { name: "RESEARCH", href: "/Research", isExternal: false },
+    { name: "RESEARCH", href: "/cv#research", isExternal: false },
     { name: "BLOG", href: "/Blog", isExternal: false },
     { name: "EXPERIENCE", href: "#experience", isExternal: false },
     { name: "STORY", href: "#story", isExternal: false },

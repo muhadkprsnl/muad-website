@@ -1,6 +1,6 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Github, ArrowRight } from "lucide-react";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -34,8 +34,8 @@ function PerformanceAnalytics() {
     const sectionRef = useRef(null);
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const locationState = location.state as { from?: string; fromLabel?: string } | null;
-    const backTo = locationState?.from === "/cv" ? "/cv" : "/research";
-    const backLabel = locationState?.from === "/cv" ? locationState.fromLabel || "CV" : "Research";
+    const backTo = locationState?.from?.startsWith("/cv") ? locationState.from : "/cv#research";
+    const backLabel = locationState?.from?.startsWith("/cv") ? locationState.fromLabel || "CV" : "Research";
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -141,7 +141,7 @@ function PerformanceAnalytics() {
                                     {backLabel}
                                 </Link>
                                 <span className="text-gray-400">/</span>
-                                <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">AI Performance System</span>
+                                <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">AI Players Tracking System</span>
                             </div>
                         </div>
                     </div>
@@ -150,9 +150,20 @@ function PerformanceAnalytics() {
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12 sm:mb-16">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
-                            AI-BASED<br />FOOTBALL PERFORMANCE<br />INTELLIGENCE
+                            AI-BASED<br />FOOTBALL PLAYERS<br />TRACKING
                         </h1>
                         <div className="w-20 sm:w-24 h-1 bg-red-600 mx-auto mb-6 sm:mb-8"></div>
+                        <a
+                            href="https://github.com/muhadkprsnl/Player-tracking.git"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Button variant="outline" className="gap-2 mx-auto">
+                                <Github className="w-4 h-4" />
+                                View on GitHub
+                                <ArrowRight className="w-4 h-4" />
+                            </Button>
+                        </a>
                     </div>
 
                     <div className="space-y-6 sm:space-y-8 text-gray-700 text-base sm:text-lg leading-relaxed">
@@ -190,7 +201,7 @@ function PerformanceAnalytics() {
                             </div>
                             <div className="space-y-4 text-gray-700 text-base sm:text-lg leading-relaxed">
                                 <p>
-                                    The AI-Based Football Performance Intelligence System is designed to revolutionize football analytics through advanced computer vision and machine learning technologies.
+                                    The AI-Based Football Players Tracking System is designed to revolutionize football analytics through advanced computer vision and machine learning technologies.
                                 </p>
 
                                 <p>
@@ -245,7 +256,7 @@ function PerformanceAnalytics() {
                     </div>
                     <div className="space-y-4 sm:space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
                         <p>
-                            The AI Performance Intelligence System delivers practical value across multiple football domains, from coaching to broadcasting.
+                            The AI Players Tracking System delivers practical value across multiple football domains, from coaching to broadcasting.
                         </p>
 
                         <p>
@@ -266,6 +277,36 @@ function PerformanceAnalytics() {
                     </div>
                 </div>
             </section >
+
+            {/* GitHub Repository CTA */}
+            <section className="py-12 sm:py-16 md:py-20">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="p-6 sm:p-8 bg-gray-50 rounded-lg border border-gray-200">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div>
+                                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
+                                    Explore the Source Code
+                                </h3>
+                                <p className="text-sm sm:text-base text-gray-600">
+                                    Access the complete implementation on GitHub
+                                </p>
+                            </div>
+                            <a
+                                href="https://github.com/muhadkprsnl/Player-tracking.git"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-shrink-0"
+                            >
+                                <Button variant="outline" className="gap-2 whitespace-nowrap">
+                                    <Github className="w-4 h-4" />
+                                    View Repository
+                                    <ArrowRight className="w-4 h-4" />
+                                </Button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Technology Stack Section */}
             < section className="py-16 sm:py-20 md:py-28 bg-gray-50" >
@@ -365,7 +406,7 @@ function PerformanceAnalytics() {
                                 {backLabel}
                             </Link>
                             <span className="text-gray-400">/</span>
-                            <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">AI Performance System</span>
+                            <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">AI Players Tracking System</span>
                         </div>
                     </div>
                 </div>
@@ -573,7 +614,7 @@ export default PerformanceAnalytics;
 //                             </div>
 //                             <div className="space-y-4 text-gray-700 leading-relaxed">
 //                                 <p>
-//                                     The AI-Based Football Performance Intelligence System is designed to revolutionize football analytics through advanced computer vision and machine learning technologies.
+//                                     The AI-Based Football Players Tracking System is designed to revolutionize football analytics through advanced computer vision and machine learning technologies.
 //                                 </p>
 
 //                                 <p>
@@ -628,7 +669,7 @@ export default PerformanceAnalytics;
 //                     </div>
 //                     <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
 //                         <p>
-//                             The AI Performance Intelligence System delivers practical value across multiple football domains, from coaching to broadcasting.
+//                             The AI Players Tracking System delivers practical value across multiple football domains, from coaching to broadcasting.
 //                         </p>
 
 //                         <p>
@@ -741,7 +782,7 @@ export default PerformanceAnalytics;
 //                         <div className="flex items-center space-x-2 text-sm">
 //                             <a href="/research" className="text-gray-600 hover:text-gray-900 transition-colors">Research</a>
 //                             <span className="text-gray-400">/</span>
-//                             <span className="text-gray-900 font-medium">AI Performance System</span>
+//                             <span className="text-gray-900 font-medium">AI Players Tracking System</span>
 //                         </div>
 //                     </div>
 //                 </div>
@@ -763,7 +804,7 @@ export default PerformanceAnalytics;
 //                         <div className="flex items-center space-x-2 text-sm">
 //                             <a href="/research" className="text-gray-600 hover:text-gray-900 transition-colors">Research</a>
 //                             <span className="text-gray-400">/</span>
-//                             <span className="text-gray-900 font-medium">AI Performance System</span>
+//                             <span className="text-gray-900 font-medium">AI Players Tracking System</span>
 //                         </div>
 //                     </div>
 //                 </div>
