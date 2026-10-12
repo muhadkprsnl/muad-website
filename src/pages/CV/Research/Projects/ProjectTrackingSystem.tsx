@@ -18,11 +18,9 @@ import { Badge } from "@/components/ui/badge";
 function ProjectTrackingSystem() {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
-    const videoRef = useRef(null);
-    const sectionRef = useRef(null);
     const locationState = location.state as { from?: string; fromLabel?: string } | null;
-    const backTo = locationState?.from === "/cv" ? "/cv" : "/research";
-    const backLabel = locationState?.from === "/cv" ? locationState.fromLabel || "CV" : "Research";
+    const backTo = locationState?.from?.startsWith("/cv") ? locationState.from : "/cv#research";
+    const backLabel = locationState?.from?.startsWith("/cv") ? locationState.fromLabel || "CV" : "Research";
 
     useEffect(() => {
         const timeout = setTimeout(() => {

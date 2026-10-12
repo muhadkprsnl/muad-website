@@ -9,18 +9,16 @@ import {
 import {
   BrowserRouter, Routes, Route
 } from "react-router-dom";
-import Index from "./pages/Index";
-import Blog from "./pages/Blog";
-import NotFound from "./pages/NotFound";
-import ResearchDetail from "./pages/ResearchDetail";
-import PerformanceAnalytics from "./pages/PerformanceAnalytics";
-import Research from "./pages/Research";
-import CV from "./pages/CV";
-import ExperienceDetail from "./pages/ExperienceDetail";
-import CaseStudies from "./pages/CaseStudies";
-import DataDrivenPlayerScouting from "./pages/Data-Driven Player";
-import AcademyDevelopmentModels from "./pages/AcademyDevelopmentModels";
-import ProjectTrackingSystem from "./pages/ProjectTrackingSystem";
+import Index from "./pages/Home/Index";
+import Blog from "./pages/Blog/Blog";
+import NotFound from "./pages/Common/NotFound";
+import ResearchDetail from "./pages/CV/Research/ResearchDetail";
+import PerformanceAnalytics from "./pages/CV/Research/Projects/PerformanceAnalytics";
+import CV from "./pages/CV/CV";
+import ExperienceDetail from "./pages/Experience/ExperienceDetail";
+import CaseStudies from "./pages/Cases/CaseStudies";
+import ProjectTrackingSystem from "./pages/CV/Research/Projects/ProjectTrackingSystem";
+import RedefinedBradleyTerry from "./pages/CV/Research/Projects/RedefinedBradleyTerry";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -32,17 +30,16 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/research/:id" element={<ResearchDetail />} />
-          <Route path="/research/performance-analytics" element={<PerformanceAnalytics />} />
-          <Route path="/research/data-driven-scouting" element={<DataDrivenPlayerScouting />} />
-          <Route path="/research/academy-development" element={<AcademyDevelopmentModels />} />
-          <Route path="/research/project-tracking" element={<ProjectTrackingSystem />} />
-          <Route path="/Research" element={<Research />} />
           <Route path="/cv" element={<CV />} />
+          {/* Specific research routes BEFORE generic :id route */}
+          <Route path="/cv/research/redefined-bradley-terry" element={<RedefinedBradleyTerry />} />
+          <Route path="/cv/research/performance-analytics" element={<PerformanceAnalytics />} />
+          <Route path="/cv/research/project-tracking" element={<ProjectTrackingSystem />} />
+          <Route path="/cv/research/:id" element={<ResearchDetail />} />
           <Route path="/Blog" element={<Blog />} />
           <Route path="/experience/:id" element={<ExperienceDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          < Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

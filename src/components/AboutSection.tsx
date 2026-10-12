@@ -22,7 +22,7 @@ const AboutSection = () => {
                             </div>
                             <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
                                 <p>
-                                   I’m Muhad K, a data science enthusiast and QA engineer focused on building insight-driven systems. My journey began in computer science,
+                                   I’m Muhad K, a AI full-stack developer  and data science enthusiast focused on building insight-driven systems. My journey began in computer science,
                                     but my true passion has always been finding ways to bring technology into sport.
                                 </p>
                                 <p>
@@ -39,7 +39,7 @@ const AboutSection = () => {
                             </div>
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4">
                                 <Link
-                                    to="/Research"
+                                    to="/cv#research"
                                     className="px-6 sm:px-8 py-2.5 sm:py-3 bg-red-600 text-white font-semibold text-xs sm:text-sm tracking-wide hover:bg-red-700 transition-colors duration-300 text-center"
                                 >
                                     RESEARCH

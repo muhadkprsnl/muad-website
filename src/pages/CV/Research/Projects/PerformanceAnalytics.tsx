@@ -1,6 +1,6 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Github, ArrowRight } from "lucide-react";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -30,12 +30,9 @@ import Footer from "@/components/Footer";
 function PerformanceAnalytics() {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
-    const videoRef = useRef(null);
-    const sectionRef = useRef(null);
-    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const locationState = location.state as { from?: string; fromLabel?: string } | null;
-    const backTo = locationState?.from === "/cv" ? "/cv" : "/research";
-    const backLabel = locationState?.from === "/cv" ? locationState.fromLabel || "CV" : "Research";
+    const backTo = locationState?.from?.startsWith("/cv") ? locationState.from : "/cv#research";
+    const backLabel = locationState?.from?.startsWith("/cv") ? locationState.fromLabel || "CV" : "Research";
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -45,40 +42,6 @@ function PerformanceAnalytics() {
         return () => clearTimeout(timeout);
     }, []);
 
-    useEffect(() => {
-        if (isLoading) return;
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const [entry] = entries;
-                if (entry.isIntersecting) {
-                    if (videoRef.current) {
-                        videoRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                        setIsVideoPlaying(true);
-                    }
-                } else {
-                    if (videoRef.current) {
-                        videoRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                        setIsVideoPlaying(false);
-                    }
-                }
-            },
-            {
-                threshold: 0.5,
-                rootMargin: '0px'
-            }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, [isLoading]);
 
     if (isLoading) {
         return (
@@ -141,7 +104,7 @@ function PerformanceAnalytics() {
                                     {backLabel}
                                 </Link>
                                 <span className="text-gray-400">/</span>
-                                <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">AI Performance System</span>
+                                <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">AI Players Tracking System</span>
                             </div>
                         </div>
                     </div>
@@ -150,9 +113,20 @@ function PerformanceAnalytics() {
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12 sm:mb-16">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
-                            AI-BASED<br />FOOTBALL PERFORMANCE<br />INTELLIGENCE
+                            AI-BASED<br />FOOTBALL PLAYERS<br />TRACKING
                         </h1>
                         <div className="w-20 sm:w-24 h-1 bg-red-600 mx-auto mb-6 sm:mb-8"></div>
+                        <a
+                            href="https://github.com/muhadkprsnl/Player-tracking.git"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Button variant="outline" className="gap-2 mx-auto">
+                                <Github className="w-4 h-4" />
+                                View on GitHub
+                                <ArrowRight className="w-4 h-4" />
+                            </Button>
+                        </a>
                     </div>
 
                     <div className="space-y-6 sm:space-y-8 text-gray-700 text-base sm:text-lg leading-relaxed">
@@ -178,7 +152,7 @@ function PerformanceAnalytics() {
             </section >
 
             {/* Core Objectives Section */}
-            < section ref={sectionRef} className="py-16 sm:py-20 md:py-28 bg-gray-50" >
+            <section className="py-16 sm:py-20 md:py-28 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
                         <div className="lg:w-1/2 space-y-6">
@@ -190,7 +164,7 @@ function PerformanceAnalytics() {
                             </div>
                             <div className="space-y-4 text-gray-700 text-base sm:text-lg leading-relaxed">
                                 <p>
-                                    The AI-Based Football Performance Intelligence System is designed to revolutionize football analytics through advanced computer vision and machine learning technologies.
+                                    The AI-Based Football Players Tracking System is designed to revolutionize football analytics through advanced computer vision and machine learning technologies.
                                 </p>
 
                                 <p>
@@ -217,7 +191,6 @@ function PerformanceAnalytics() {
                         <div className="lg:w-1/2 relative">
                             {/* YouTube Video with Auto-play on Scroll */}
                             <iframe
-                                ref={videoRef}
                                 className="w-full aspect-video"
                                 src="https://www.youtube.com/embed/KWZbV1OfHqw"
                                 title="AI Football Performance System Demo"
@@ -225,10 +198,6 @@ function PerformanceAnalytics() {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                             />
-
-                            <div className="text-center mt-2 text-xs sm:text-sm text-gray-500">
-                                {isVideoPlaying ? 'Video playing...' : 'Video paused'}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,7 +214,7 @@ function PerformanceAnalytics() {
                     </div>
                     <div className="space-y-4 sm:space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
                         <p>
-                            The AI Performance Intelligence System delivers practical value across multiple football domains, from coaching to broadcasting.
+                            The AI Players Tracking System delivers practical value across multiple football domains, from coaching to broadcasting.
                         </p>
 
                         <p>
@@ -266,6 +235,36 @@ function PerformanceAnalytics() {
                     </div>
                 </div>
             </section >
+
+            {/* GitHub Repository CTA */}
+            <section className="py-12 sm:py-16 md:py-20">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="p-6 sm:p-8 bg-gray-50 rounded-lg border border-gray-200">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div>
+                                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
+                                    Explore the Source Code
+                                </h3>
+                                <p className="text-sm sm:text-base text-gray-600">
+                                    Access the complete implementation on GitHub
+                                </p>
+                            </div>
+                            <a
+                                href="https://github.com/muhadkprsnl/Player-tracking.git"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-shrink-0"
+                            >
+                                <Button variant="outline" className="gap-2 whitespace-nowrap">
+                                    <Github className="w-4 h-4" />
+                                    View Repository
+                                    <ArrowRight className="w-4 h-4" />
+                                </Button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Technology Stack Section */}
             < section className="py-16 sm:py-20 md:py-28 bg-gray-50" >
@@ -365,7 +364,7 @@ function PerformanceAnalytics() {
                                 {backLabel}
                             </Link>
                             <span className="text-gray-400">/</span>
-                            <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">AI Performance System</span>
+                            <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">AI Players Tracking System</span>
                         </div>
                     </div>
                 </div>
@@ -410,9 +409,6 @@ export default PerformanceAnalytics;
 
 // function PerformanceAnalytics() {
 //     const [isLoading, setIsLoading] = useState(true);
-//     const videoRef = useRef(null);
-//     const sectionRef = useRef(null);
-//     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
 //     useEffect(() => {
 //         const timeout = setTimeout(() => {
@@ -573,7 +569,7 @@ export default PerformanceAnalytics;
 //                             </div>
 //                             <div className="space-y-4 text-gray-700 leading-relaxed">
 //                                 <p>
-//                                     The AI-Based Football Performance Intelligence System is designed to revolutionize football analytics through advanced computer vision and machine learning technologies.
+//                                     The AI-Based Football Players Tracking System is designed to revolutionize football analytics through advanced computer vision and machine learning technologies.
 //                                 </p>
 
 //                                 <p>
@@ -628,7 +624,7 @@ export default PerformanceAnalytics;
 //                     </div>
 //                     <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
 //                         <p>
-//                             The AI Performance Intelligence System delivers practical value across multiple football domains, from coaching to broadcasting.
+//                             The AI Players Tracking System delivers practical value across multiple football domains, from coaching to broadcasting.
 //                         </p>
 
 //                         <p>
@@ -741,7 +737,7 @@ export default PerformanceAnalytics;
 //                         <div className="flex items-center space-x-2 text-sm">
 //                             <a href="/research" className="text-gray-600 hover:text-gray-900 transition-colors">Research</a>
 //                             <span className="text-gray-400">/</span>
-//                             <span className="text-gray-900 font-medium">AI Performance System</span>
+//                             <span className="text-gray-900 font-medium">AI Players Tracking System</span>
 //                         </div>
 //                     </div>
 //                 </div>
@@ -763,7 +759,7 @@ export default PerformanceAnalytics;
 //                         <div className="flex items-center space-x-2 text-sm">
 //                             <a href="/research" className="text-gray-600 hover:text-gray-900 transition-colors">Research</a>
 //                             <span className="text-gray-400">/</span>
-//                             <span className="text-gray-900 font-medium">AI Performance System</span>
+//                             <span className="text-gray-900 font-medium">AI Players Tracking System</span>
 //                         </div>
 //                     </div>
 //                 </div>

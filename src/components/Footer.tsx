@@ -2,7 +2,12 @@ import { Linkedin, Github, Instagram, BookOpen } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-6 sm:py-8">
+    <>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      />
+      <footer className="bg-black text-white py-6 sm:py-8">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Mobile & Tablet: Stacked Layout */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
@@ -11,45 +16,6 @@ const Footer = () => {
             © 2026 MUHAD K. All rights reserved.
           </p>
 
-          {/* Social Media Icons - Right side */}
-          {/* <div className="hidden lg:flex items-center space-x-1">
-            <a
-              href="https://linkedin.com/in/muhadk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-primary transition-colors duration-200"
-            >
-              <i className="fa fa-linkedin-square text-lg"></i>
-            </a>
-            <a
-              href="https://github.com/muhadkprsnl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-primary transition-colors duration-200"
-            >
-              <i className="fa fa-github text-lg"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/mu_aadk.12/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-primary transition-colors duration-200"
-            >
-              <i className="fa fa-instagram text-lg"></i>
-            </a>
-            <a
-              href="https://www.medium.com/muhadk12"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-primary transition-colors duration-200"
-            >
-              <i className="fa fa-medium text-lg"></i>
-            </a>
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            />
-          </div> */}
           <div className="flex items-center space-x-4 order-1 sm:order-2">
             <a
               href="https://linkedin.com/in/muhadk"
@@ -57,7 +23,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-white hover:text-primary transition-colors duration-200"
             >
-              <i className="fa fa-linkedin-square text-lg"></i>
+              <i className="fa fa-square-linkedin text-lg"></i>
             </a>
             <a
               href="https://github.com/muhadkprsnl"
@@ -75,14 +41,14 @@ const Footer = () => {
             >
               <i className="fa fa-instagram text-lg"></i>
             </a>
-            {/* <a
+            <a
               href="https://www.medium.com/muhadk12"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-primary transition-colors duration-200"
             >
               <i className="fa fa-medium text-lg"></i>
-            </a> */}
+            </a>
           </div>
 
           {/* Optional: Additional links for mobile */}
@@ -95,7 +61,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer >
+      </footer>
+    </>
   );
 };
 

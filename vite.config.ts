@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  css: {
+    postcss: "./postcss.config.js",
+  },
   plugins: [react()],
   resolve: {
     alias: {
