@@ -14,6 +14,7 @@ interface ResearchProject {
     category: string;
     mediumLink?: string;
     linkedinLink?: string;
+    pdfLink?: string;
 }
 
 interface CVResearchSectionProps {
@@ -62,7 +63,16 @@ export const CVResearchSection = ({ projects }: CVResearchSectionProps) => {
                                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
                                     {project.description}
                                 </p>
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                                <div className="flex items-center justify-between lg:hidden gap-4 mb-4">
+                                    <p className="text-xs sm:text-sm text-muted-foreground">
+                                        {project.category}
+                                    </p>
+                                    <Badge className={`text-xs sm:text-sm flex items-center gap-1.5 px-3 py-1.5 border ${statusConfig[project.status].className}`}>
+                                        {statusConfig[project.status].icon}
+                                        {statusConfig[project.status].label}
+                                    </Badge>
+                                </div>
+                                <div className="flex flex-row gap-2">
                                     {(() => {
                                         const githubLinks: Record<string, string> = {
                                             "data-driven-scouting": "https://github.com/muhadkprsnl/Radar-chart-using-python/blob/main/README.md",
@@ -87,6 +97,28 @@ export const CVResearchSection = ({ projects }: CVResearchSectionProps) => {
                                                         </Button>
                                                     </a>
                                                 </>
+                                            );
+                                        }
+
+                                        if (project.id === "juggling-ball") {
+                                            return (
+                                                <a href={project.linkedinLink} target="_blank" rel="noopener noreferrer">
+                                                    <Button variant="outline" className="gap-2">
+                                                        <Linkedin className="w-4 h-4" />
+                                                        LinkedIn
+                                                    </Button>
+                                                </a>
+                                            );
+                                        }
+
+                                        if (project.pdfLink) {
+                                            return (
+                                                <a href={project.pdfLink} target="_blank" rel="noopener noreferrer">
+                                                    <Button variant="outline" className="gap-2">
+                                                        View Showcase
+                                                        <ArrowRight className="w-4 h-4" />
+                                                    </Button>
+                                                </a>
                                             );
                                         }
 
@@ -161,7 +193,7 @@ export const CVResearchSection = ({ projects }: CVResearchSectionProps) => {
                                     )}
                                 </div>
                             </div>
-                            <div className="flex-shrink-0 min-w-[140px] flex flex-col items-start sm:items-end gap-3">
+                            <div className="hidden lg:flex flex-shrink-0 min-w-[140px] flex-col items-end gap-3">
                                 <p className="text-xs sm:text-sm text-muted-foreground">
                                     {project.category}
                                 </p>

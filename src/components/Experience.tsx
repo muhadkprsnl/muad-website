@@ -22,19 +22,17 @@ const Experience = () => {
     const fullstackSkills = [
         { name: "React JS", level: "Intermediate" },
         { name: "Responsive Design (Bootstrap / Tailwind)", level: "Basic" },
-        { name: "Go lang", level: "Intermediate" },
+        { name: "Go lang, Python Fast API", level: "Intermediate" },
         { name: "REST API Development", level: "Intermediate" },
-        { name: "MongoDB", level: "Intermediate" },
+        { name: "MongoDB, PostgreSQL", level: "Intermediate" },
         { name: "Git & GitHub", level: "Intermediate" },
     ];
 
     const dsSkills = [
-        { name: "Python (NumPy, Pandas)", level: "Intermediate" },
+        { name: "Python (NumPy, Pandas, Scikit-learn)", level: "Intermediate" },
         { name: "SQL (Data Querying)", level: "Intermediate" },
-        { name: "Matplotlib / Seaborn", level: "Intermediate" },
-        { name: "Tableau / Power BI", level: "Basic" },
-        { name: "Scikit-learn", level: "Intermediate" },
-        { name: "TensorFlow / PyTorch", level: "Basic" },
+        { name: "Matplotlib, Seaborn", level: "Intermediate" },
+        { name: "Power BI", level: "Basic" },
         { name: "Git & GitHub", level: "Intermediate" },
         { name: "Jupyter Notebook", level: "Intermediate" },
     ];

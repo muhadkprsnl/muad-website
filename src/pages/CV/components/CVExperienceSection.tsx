@@ -70,16 +70,14 @@ export const CVExperienceSection = ({ experiences }: CVExperienceSectionProps) =
                                     {/* Technologies Used */}
                                     <div>
                                         <h5 className="text-lg font-medium mb-4">Technologies Used</h5>
-                                        <div className="flex flex-wrap gap-2">
-                                            {position.technologies.map((tech) => (
-                                                <span
-                                                    key={tech}
-                                                    className="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm"
-                                                >
-                                                    {tech}
+                                        <p className="text-muted-foreground text-sm">
+                                            {position.technologies.map((tech, techIndex) => (
+                                                <span key={tech}>
+                                                    {techIndex > 0 && <span className="mx-2">•</span>}
+                                                    <span>{tech}</span>
                                                 </span>
                                             ))}
-                                        </div>
+                                        </p>
                                     </div>
                                 </div>
                             ))}

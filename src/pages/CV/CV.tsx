@@ -6,6 +6,8 @@ import { CVAboutSection } from "./components/CVAboutSection";
 import { CVTechStack } from "./components/CVTechStack";
 import { CVExperienceSection } from "./components/CVExperienceSection";
 import { CVResearchSection } from "./components/CVResearchSection";
+import Footer from "@/components/Footer";
+import fmsPdf from "@/assets/fms/fms-showcase_1.pdf";
 
 const CV = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -31,30 +33,25 @@ const CV = () => {
 
     const techStack = {
         qa: [
-            "Cypress",
-            "REST API Testing (Postman)",
+            "Cypress, REST API Testing (Postman)",
             "Cucumber (BDD)",
-            "Git",
-            "CI/CD (GitHub Actions)",
+            "Git, CI/CD (GitHub Actions)",
             "SQL (Database Validation)",
         ],
         fullstack: [
             "React JS",
-            "Responsive Design (Bootstrap / Tailwind)",
-            "Go lang",
-            "Python Fast API",
+            "Responsive Design (Bootstrap, Tailwind)",
+            "Go lang, Python Fast API",
             "REST API Development",
-            "MongoDB",
-            "Git & GitHub",
+            "MongoDB, PostgreSQL",
+            "Git, GitHub",
         ],
         dataScience: [
-            "Python (NumPy, Pandas)",
+            "Python (NumPy, Pandas, Scikit-learn)",
             "SQL (Data Querying)",
-            "Matplotlib / Seaborn",
+            "Matplotlib, Seaborn",
             "Power BI",
-            "Scikit-learn",
-            // "TensorFlow / PyTorch",
-            "Git & GitHub",
+            "Git, GitHub",
             "Jupyter Notebook",
         ],
     };
@@ -78,16 +75,10 @@ const CV = () => {
                         "Conducted research on new data science methods and AI techniques to enhance Dartle's analytical capabilities and product intelligence.",
                     ],
                     technologies: [
-                        "Python",
-                        "Scikit-learn",
-                        "TensorFlow",
-                        "Pandas",
-                        "NumPy",
-                        "Matplotlib",
-                        "Seaborn",
-                        "Jupyter Notebook",
-                        "SQL",
-                        "Power BI",
+                        "Python, Scikit-learn, TensorFlow, Pandas, NumPy",
+                        "Matplotlib, Seaborn",
+                        "Jupyter Notebook, SQL",
+                        "Power BI"
                     ],
                 },
                 {
@@ -105,12 +96,10 @@ const CV = () => {
                     technologies: [
                         "React",
                         "Go lang",
-                        "MongoDB",
-                        "Tailwind CSS",
-                        "Bootstrap",
+                        "MongoDB, PostgreSQL",
+                        "Tailwind CSS, Bootstrap",
                         "REST API",
-                        "Git",
-                        "GitHub",
+                        "Git, GitHub",
                         "Data Visualization",
                         "Docker"
                     ],
@@ -130,15 +119,11 @@ const CV = () => {
                         "Supported the Community App module testing, ensuring seamless communication between parents, coaches, and players.",
                     ],
                     technologies: [
-                        "Selenium",
-                        "Cypress",
-                        "Postman",
-                        "Jasmine",
-                        "Git",
-                        "GitHub Actions",
+                        "Selenium, Cypress",
+                        "Postman, REST API",
+                        "Jasmine, TestNG",
+                        "Git, GitHub Actions",
                         "Cucumber (BDD)",
-                        "REST API",
-                        "TestNG",
                         "Clarity"
                     ],
                 }
@@ -160,7 +145,7 @@ const CV = () => {
                         "Performed feature selection and statistical analysis to identify key biomarkers influencing prediction accuracy.",
                         "Developed a user-friendly web interface using Flask to allow real-time cancer prediction based on input patient data.",
                     ],
-                    technologies: ["Logistic Regression", "Random Forest", "SVM", "Flask", "Python", "Scikit-learn"]
+                    technologies: ["Logistic Regression, Random Forest, SVM", "Flask, Python, Scikit-learn"]
                 }
             ]
         }
@@ -172,7 +157,7 @@ const CV = () => {
             title: "REDEFINED BRADLEY TERRY DUAL MODEL",
             description: "Integrating advanced statistical models with football data to redefine fairness in duel performance evaluation.",
             status: "ongoing" as const,
-            category: "Community Impact",
+            category: "Sports Analytics, Data Science",
         },
         {
             id: "performance-analytics",
@@ -180,6 +165,14 @@ const CV = () => {
             description: "Integrating YOLOv11 with advanced tracking algorithms to automate player detection, tactical analysis, and performance evaluation.",
             status: "completed" as const,
             category: "Data Science",
+        },
+        {
+            id: "fms",
+            title: "FOOTBALL CLUBS MANAGEMENT SYSTEM",
+            description: "FMS is a platform built to run a football club entirely on data, bringing club operations, a unified football data layer, and AI-driven scouting intelligence into one system. It replaces the patchwork of disconnected tools most clubs rely on with a single source of truth for players, staff, training, and recruitment decisions.",
+            status: "ongoing" as const,
+            category: "Software Development, AI/ML",
+            pdfLink: fmsPdf,
         },
         {
             id: "kloppy",
@@ -201,8 +194,16 @@ const CV = () => {
             title: "RADAR CHART - FOOTBALL PLAYER COMPARISON",
             description: "Python project that visualizes and compares football/soccer player performance metrics using interactive radar charts.",
             status: "completed" as const,
-            category: "Talent Identification",
+            category: "Data Visualization",
             linkedinLink: "https://www.linkedin.com/feed/update/urn:li:activity:7448427195410362368/",
+        },
+        {
+            id: "juggling-ball",
+            title: "JUGGLING BALL COUNTER",
+            description: "Built a juggling ball counter using Yolov78, After tuning, the solution reached ~98% accuracy on the tested segment.",
+            status: "completed" as const,
+            category: "Machine Learning",
+            linkedinLink: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7420731152098811904/",
         },
         {
             id: "project-tracking",
@@ -224,13 +225,6 @@ const CV = () => {
             description: "A comprehensive Water Management System for tracking water usage, collections, expenses, and monthly balances. .",
             status: "completed" as const,
             category: "Software Development",
-        },
-        {
-            id: "academy-development",
-            title: "ACADEMY DEVELOPMENT MODELS",
-            description: "Structured training systems that support holistic athlete growth using data-driven insights.",
-            status: "yet to start" as const,
-            category: "Youth Development",
         },
     ];
 
@@ -268,11 +262,7 @@ const CV = () => {
                 <CVResearchSection projects={researchProjects} />
             </main>
 
-            <footer className="border-t mt-12 sm:mt-16">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 text-center text-sm text-muted-foreground">
-                    <p>© 2026 Muhad K. All rights reserved.</p>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 };

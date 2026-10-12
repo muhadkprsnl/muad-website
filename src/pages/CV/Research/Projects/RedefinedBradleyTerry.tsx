@@ -97,13 +97,13 @@ function RedefinedBradleyTerry() {
 
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+                        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-8 leading-tight">
                             REDEFINED BRADLEY–<br />TERRY DUAL MODEL
                         </h1>
                         <div className="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
                     </div>
 
-                    <div className="space-y-8 text-gray-700 text-lg leading-relaxed">
+                    <div className="space-y-4 sm:space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
                         <p>
                             The Bradley–Terry (BT) model has long served as a foundational statistical framework for evaluating paired comparisons, particularly in contexts such as 1v1 duels in football. Its ability to estimate player ability based on win–loss outcomes and opponent strength has made it a valuable tool for measuring individual performance fairness. However, as the modern game continues to evolve, the BT model's traditional formulation struggles to capture the contextual richness of football's tactical and situational variability. Factors such as spatial zones, match tempo, game state, and role-specific responsibilities play a decisive role in determining duel outcomes, yet remain unaccounted for in the classical model structure. This creates a need for an evolved analytical framework that integrates both data-driven precision and tactical understanding.
                         </p>
@@ -114,15 +114,15 @@ function RedefinedBradleyTerry() {
                 </div>
             </section>
 
-            <section className="py-20 md:py-28 bg-gray-50">
+            <section className="py-16 sm:py-20 md:py-28 bg-gray-50">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                             LIMITATIONS OF THE<br />CURRENT BT MODEL
                         </h2>
                         <div className="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
                     </div>
-                    <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <div className="space-y-4 sm:space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
                         <p>
                             While the classical BT model provides a fair estimate of duel ability by accounting for opponent strength,
                             several shortcomings remain when applied directly to football contexts.
@@ -156,15 +156,15 @@ function RedefinedBradleyTerry() {
                 </div>
             </section>
 
-            <section className="py-20 md:py-28 bg-white">
+            <section className="py-16 sm:py-20 md:py-28 bg-white">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                             ENHANCING THE <br /> BT DUEL MODEL
                         </h2>
                         <div className="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
                     </div>
-                    <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <div className="space-y-4 sm:space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
                         <p>
                             To address these gaps, the following modifications are proposed for a Modern BT Duel Evaluation Framework:
                         </p>
@@ -192,10 +192,10 @@ function RedefinedBradleyTerry() {
                 </div>
             </section>
 
-            <section className="py-20 md:py-28 bg-gray-50">
+            <section className="py-16 sm:py-20 md:py-28 bg-gray-50">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                             ATHLETE PERFORMANCE<br />ANALYTICS
                         </h2>
                         <div className="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
@@ -218,7 +218,7 @@ function RedefinedBradleyTerry() {
                 }}
             >
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                         <WritingText
                             text="CONCLUSION OF ENHANCED MODEL"
                             inView={true}
@@ -230,8 +230,8 @@ function RedefinedBradleyTerry() {
                             }}
                         />
                     </h2>
-                    <p className="text-lg md:text-xl mb-8 leading-relaxed">
-                        The redefined BT Duel Model aims to bridge the gap between traditional statistical fairness and modern football's tactical complexity. By embedding context — spatial, temporal, and behavioral — the model transforms from a static evaluation tool into a dynamic performance intelligence system. This evolution not only enhances analytical accuracy but also provides practical value in scouting, tactical planning, and player development pipelines within professional football environments.
+                    <p className="text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
+                        The redefined BT Duel Model aims to bridge the gap between traditional statistical fairness and the tactical complexity of modern football. By incorporating spatial, temporal, and behavioral context, the model moves beyond static evaluation to provide a more dynamic and comprehensive understanding of player performance. This approach improves analytical accuracy while offering practical benefits for scouting, tactical planning, and player development within professional football environments.
                     </p>
                 </div>
             </section>

@@ -22,7 +22,7 @@ const AboutSection = () => {
                             </div>
                             <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
                                 <p>
-                                   I’m Muhad K, a data science enthusiast and QA engineer focused on building insight-driven systems. My journey began in computer science,
+                                   I’m Muhad K, a AI full-stack developer  and data science enthusiast focused on building insight-driven systems. My journey began in computer science,
                                     but my true passion has always been finding ways to bring technology into sport.
                                 </p>
                                 <p>
